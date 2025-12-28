@@ -5,65 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pablo Meyer — Branding & Marketing</title>
   <meta name="description" content="Portfolio de Pablo Meyer: branding, redes sociales y marketing digital." />
+  <meta name="theme-color" content="#050505" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon (pon al menos UNO de estos archivos en tu repo) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
 <body>
   <!-- NAV -->
-<header class="nav" id="top">
-  <div class="container nav__inner">
-    <!-- LOGO -->
-    <a class="brand" href="#top" aria-label="Inicio">
-      <img src="assets/icons/Logo.svg" alt="Pablo Meyer" class="brand__logo">
-    </a>
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <img
+          src="assets/icons/logo.svg"
+          alt="Pablo Meyer — Branding y Diseño Digital"
+          class="brand__logo"
+        />
+      </a>
 
-    <!-- LINKS DESKTOP -->
-    <nav class="nav__links" aria-label="Navegación principal">
-      <a href="#top" class="nav__link">HOME</a>
-      <a href="#about" class="nav__link">SOBRE MI</a>
-      <a href="#projects" class="nav__link">PROYECTOS</a>
-    </nav>
+      <nav class="nav__links" aria-label="Navegación">
+        <a href="#top" class="nav__link">HOME</a>
+        <a href="#about" class="nav__link">SOBRE MI</a>
+        <a href="#projects" class="nav__link">PROYECTOS</a>
+      </nav>
 
-    <!-- CTA (siempre visible) -->
-    <a class="btn btn--accent nav__cta" href="#contact">HABLEMOS</a>
+      <!-- CTA SIEMPRE VISIBLE (desktop y móvil) -->
+      <a class="btn btn--accent nav__cta" href="#contact">HABLEMOS</a>
 
-    <!-- HAMBURGUESA (solo móvil) -->
-    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+      <!-- Burger (solo móvil) -->
+      <button class="nav__burger" id="navBurg" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-  <!-- OVERLAY MÓVIL -->
-  <div class="nav__overlay" hidden>
-    <nav class="nav__menu">
-      <a href="#top" class="nav__mLink">HOME</a>
-      <a href="#about" class="nav__mLink">SOBRE MI</a>
-      <a href="#projects" class="nav__mLink">PROYECTOS</a>
-    </nav>
-
-    <button class="nav__close" aria-label="Cerrar menú">✕</button>
-  </div>
-</header>
-
+    <!-- Overlay móvil -->
+    <div class="nav__overlay" id="navOverlay" hidden>
+      <button class="nav__close" id="navClose" aria-label="Cerrar menú">×</button>
+      <div class="nav__menu" role="dialog" aria-modal="true" aria-label="Menú">
+        <a class="nav__mLink" href="#top">HOME</a>
+        <a class="nav__mLink" href="#about">SOBRE MI</a>
+        <a class="nav__mLink" href="#projects">PROYECTOS</a>
+      </div>
+    </div>
+  </header>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Sustituye la imagen en CSS: --hero-image -->
     <div class="hero__overlay" aria-hidden="true"></div>
-
     <div class="container hero__inner">
       <h1 class="hero__title">
         Diseñador gráfico experto en
         <span class="hero__marker">Branding y Marketing</span>
       </h1>
-
       <a class="btn btn--pill" href="#projects">Ver proyectos</a>
     </div>
-
     <div class="hero__divider" aria-hidden="true"></div>
   </section>
 
@@ -76,8 +77,8 @@
             src="assets/img/Pablo.jpeg"
             alt="Pablo Meyer, diseñador de branding y diseño digital"
             class="about__image"
+            loading="lazy"
           />
-
         </div>
 
         <div class="about__content">
@@ -111,106 +112,60 @@
     </div>
   </section>
 
-<!-- SERVICIOS -->
-<section class="section" id="services">
-  <div class="container">
-    <div class="card card--wide">
-      <header class="services-head center">
-        <h2 class="h2">Qué puedo hacer por tu marca</h2>
-        <p class="services-subtitle muted">
-          Packs claros, entregables concretos y un proceso simple. Diseñado para marcas que quieren verse premium.
-        </p>
-      </header>
+  <!-- SERVICIOS -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="card card--wide">
+        <header class="services-head">
+          <h2 class="h2 center">Qué puedo hacer por tu marca</h2>
+          <p class="p center services-sub">Packs claros, entregables concretos y un proceso simple. Diseñado para marcas que quieren verse premium.</p>
+        </header>
 
-      <div class="services-grid stagger reveal reveal--strong">
+        <div class="services-grid">
+          <article class="service-card reveal reveal--strong">
+            <div class="service-icon">
+              <img src="assets/icons/icon-branding.svg" alt="Branding" loading="lazy">
+            </div>
+            <h3 class="service-title">Identidad visual sólida y coherente</h3>
+            <p class="service-desc">Para marcas que quieren verse profesionales y diferenciarse desde el primer vistazo.</p>
+            <ul class="service-list">
+              <li>Logo + sistema (versiones y usos)</li>
+              <li>Paleta + tipografías + estilo visual</li>
+              <li>Mini guía / manual de marca</li>
+            </ul>
+          </article>
 
-        <!-- Branding -->
-        <article class="service-card reveal reveal--strong">
-          <div class="service-icon">
-            <img src="assets/icons/Icon Branding.svg" alt="Branding">
-          </div>
+          <article class="service-card reveal reveal--strong">
+            <div class="service-icon">
+              <img src="assets/icons/icon-social.svg" alt="Redes sociales" loading="lazy">
+            </div>
+            <h3 class="service-title">Contenido que se reconoce y convierte</h3>
+            <p class="service-desc">Para negocios que quieren consistencia visual, ritmo de publicación y un look premium.</p>
+            <ul class="service-list">
+              <li>Pack de plantillas (IG/Stories/Reels)</li>
+              <li>Guía de estilo + sistema de posts</li>
+              <li>Optimización visual del perfil</li>
+            </ul>
+          </article>
 
-          <h3 class="service-title">Identidad visual sólida y coherente</h3>
+          <article class="service-card reveal reveal--strong">
+            <div class="service-icon">
+              <img src="assets/icons/icon-marketing.svg" alt="Marketing" loading="lazy">
+            </div>
+            <h3 class="service-title">Campañas con diseño y estrategia</h3>
+            <p class="service-desc">Para marcas que quieren mejorar su presencia y generar resultados con piezas bien pensadas.</p>
+            <ul class="service-list">
+              <li>Creatividades para Ads / lanzamientos</li>
+              <li>Landing o piezas web (diseño + UI)</li>
+              <li>Dirección de arte y consistencia</li>
+            </ul>
+          </article>
+        </div>
 
-          <p class="service-desc">
-            Para marcas que quieren verse profesionales y diferenciarse desde el primer vistazo.
-          </p>
-
-          <ul class="service-list">
-            <li>Logo + sistema (versiones y usos)</li>
-            <li>Paleta + tipografías + estilo visual</li>
-            <li>Mini guía / manual de marca</li>
-          </ul>
-        </article>
-
-
-        <!-- Redes -->
-        <article class="service-card reveal reveal--strong">
-          <div class="service-icon">
-            <img src="assets/icons/Icon Sm.svg" alt="Redes sociales">
-          </div>
-
-          <h3 class="service-title">Contenido que se reconoce y convierte</h3>
-
-          <p class="service-desc">
-            Para negocios que buscan consistencia visual y un look premium.
-          </p>
-
-          <ul class="service-list">
-            <li>Pack de plantillas (IG / Stories / Reels)</li>
-            <li>Guía de estilo + sistema de posts</li>
-            <li>Optimización visual del perfil</li>
-          </ul>
-        </article>
-
-        <!-- Marketing -->
-        <article class="service-card reveal reveal--strong">
-          <div class="service-icon">
-            <img src="assets/icons/Icon Marketing.svg" alt="Marketing digital">
-          </div>
-
-          <h3 class="service-title">Campañas con diseño y estrategia</h3>
-
-          <p class="service-desc">
-            Para marcas que quieren mejorar su presencia y generar resultados.
-          </p>
-
-          <ul class="service-list">
-            <li>Creatividades para Ads y lanzamientos</li>
-            <li>Landing o piezas web (diseño + UI)</li>
-            <li>Dirección de arte y consistencia</li>
-          </ul>
-        </article>
-
-
-      </div>
-
-      <div class="services-footer">
-        <p class="services-process muted center">
-          Proceso: Descubrimiento → Diseño → Entrega
-        </p>
+        <p class="services-foot muted center">Proceso: Descubrimiento → Diseño → Entrega</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- MODAL (opcional) -->
-<div class="modal" id="serviceModal" hidden>
-  <div class="modal__backdrop" data-close-modal></div>
-
-  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal__close" type="button" aria-label="Cerrar" data-close-modal>✕</button>
-
-    <h3 class="modal__title" id="modalTitle">Ejemplo</h3>
-    <p class="modal__text muted" id="modalText"></p>
-
-    <div class="modal__actions">
-      <a class="btn btn--ghost" href="#projects" data-close-modal>Ver proyectos</a>
-      <a class="btn btn--accent" href="#contact" data-close-modal>Hablemos</a>
-    </div>
-  </div>
-</div>
-
+  </section>
 
   <!-- PROYECTOS -->
   <section class="section" id="projects">
@@ -218,59 +173,88 @@
       <div class="card card--wide">
         <h2 class="h2 center">Proyectos</h2>
 
-        <div class="projects stagger reveal reveal--strong">
-          <!-- Repite estas cards (6) -->
-          <a class="project" href="#" aria-label="Proyecto 1">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Branding</span>
-              <div class="project__year">2025</div>
+        <div class="projects-grid stagger reveal reveal--strong">
+          <a class="project-card" href="#" aria-label="Proyecto — Tasty Bites">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--a"></div>
+              <span class="project-chip">Branding</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Tasty Bites</div>
+              <div class="project-meta">
+                <span class="project-year">2025</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
 
-          <a class="project" href="#" aria-label="Proyecto 2">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Digital</span>
-              <div class="project__year">2025</div>
+          <a class="project-card" href="#" aria-label="Proyecto — Altissima">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--b"></div>
+              <span class="project-chip">Digital</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Altissima</div>
+              <div class="project-meta">
+                <span class="project-year">2025</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
 
-          <a class="project" href="#" aria-label="Proyecto 3">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Marketing</span>
-              <div class="project__year">2025</div>
+          <a class="project-card" href="#" aria-label="Proyecto — Studio Cocochic">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--c"></div>
+              <span class="project-chip">Marketing</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Studio Cocochic</div>
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
 
-          <a class="project" href="#" aria-label="Proyecto 4">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Branding</span>
-              <div class="project__year">2024</div>
+          <a class="project-card" href="#" aria-label="Proyecto — Frutas Montosa">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--d"></div>
+              <span class="project-chip">Branding</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Frutas Montosa</div>
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
 
-          <a class="project" href="#" aria-label="Proyecto 5">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Digital</span>
-              <div class="project__year">2024</div>
+          <a class="project-card" href="#" aria-label="Proyecto — Porcelanosa XTONE">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--e"></div>
+              <span class="project-chip">Digital</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Porcelanosa XTONE</div>
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
 
-          <a class="project" href="#" aria-label="Proyecto 6">
-            <div class="project__thumb"></div>
-            <div class="project__meta">
-              <div class="project__title">Proyecto</div>
-              <span class="chip chip--mini">Contenido</span>
-              <div class="project__year">2024</div>
+          <a class="project-card" href="#" aria-label="Proyecto — Social Pack">
+            <div class="project-media">
+              <div class="project-thumb project-thumb--f"></div>
+              <span class="project-chip">Contenido</span>
+            </div>
+            <div class="project-info">
+              <div class="project-title">Social Pack</div>
+              <div class="project-meta">
+                <span class="project-year">2024</span>
+                <span class="project-arrow">↗</span>
+              </div>
             </div>
           </a>
         </div>
@@ -278,105 +262,68 @@
     </div>
   </section>
 
-<!-- CONTACTO -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-card">
-      <header class="contact-head">
-        <h2 class="contact-title">¿Hablamos?</h2>
-        <p class="contact-subtitle">
-          ¿Tienes algún proyecto en mente? Contáctame y hablemos de como puedo ayudarte
-        </p>
-      </header>
+  <!-- CONTACTO -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <header class="contact-head">
+          <h2 class="contact-title">¿Hablamos?</h2>
+          <p class="contact-subtitle">
+            ¿Tienes algún proyecto en mente? Contáctame y hablemos de cómo puedo ayudarte
+          </p>
+        </header>
 
-      <div class="contact-pill">
-        <div class="pill-item">
-          <span class="pill-label">Email:</span>
-          <a class="pill-link" href="mailto:pablo.meyer00@gmail.com">pablo.meyer00@gmail.com</a>
-        </div>
-        <div class="pill-divider" aria-hidden="true"></div>
-        <div class="pill-item">
-          <span class="pill-label">Teléfono:</span>
-          <a class="pill-link" href="tel:+34640096537">+34 640 096 537</a>
-        </div>
-      </div>
-
-      <div class="contact-body">
-        <!-- FORM -->
-        <form
-          class="contact-form"
-          action="https://formspree.io/f/meeqggqp"
-          method="POST"
-        >
-          <div class="form-grid">
-            <input
-              class="field"
-              type="text"
-              name="name"
-              placeholder="Nombre"
-              autocomplete="name"
-              required
-            />
-
-            <input
-              class="field"
-              type="email"
-              name="email"
-              placeholder="Correo"
-              autocomplete="email"
-              required
-            />
-
-            <textarea
-              class="field field--textarea"
-              name="message"
-              placeholder="Mensaje"
-              rows="10"
-              required
-            ></textarea>
+        <div class="contact-pill">
+          <div class="pill-item">
+            <span class="pill-label">Email:</span>
+            <a class="pill-link" href="mailto:pablo.meyer00@gmail.com">pablo.meyer00@gmail.com</a>
           </div>
-
-          <!-- anti-spam -->
-          <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
-
-          <div class="form-actions">
-            <button class="btn btn--accent btn--xl" type="submit">Enviar</button>
+          <div class="pill-divider" aria-hidden="true"></div>
+          <div class="pill-item">
+            <span class="pill-label">Teléfono:</span>
+            <a class="pill-link" href="tel:+34640096537">+34 640 096 537</a>
           </div>
-        </form>
+        </div>
 
-        <!-- SUCCESS (se muestra después de enviar) -->
-        <div class="form-success" hidden>
-          <p class="form-success__text">Gracias, te responderé pronto.</p>
+        <div class="contact-body">
+          <form class="contact-form" action="https://formspree.io/f/meeqggqp" method="POST">
+            <div class="form-grid">
+              <input class="field" type="text" name="name" placeholder="Nombre" autocomplete="name" required />
+              <input class="field" type="email" name="email" placeholder="Correo" autocomplete="email" required />
+              <textarea class="field field--textarea" name="message" placeholder="Mensaje" rows="10" required></textarea>
+            </div>
+            <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
+            <div class="form-actions">
+              <button class="btn btn--accent btn--xl" type="submit">Enviar</button>
+            </div>
+          </form>
+
+          <div class="form-success" hidden>
+            <p class="form-success__text">Gracias, te responderé pronto.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__left">
         <a class="brand footer__brand" href="#top" aria-label="Inicio">
-          <img
-            src="assets/icons/Logo.svg"
-            alt="Pablo Meyer — Branding y Diseño Digital"
-            class="brand__logo"
-          />
+          <img src="assets/icons/logo.svg" alt="Pablo Meyer — Branding y Diseño Digital" class="brand__logo footer__logo" />
         </a>
-
         <p class="footer__tag muted">Identidades visuales y funcionales que conectan</p>
       </div>
 
-      <nav class="footer__nav">
+      <nav class="footer__nav" aria-label="Enlaces del pie">
         <a href="#top">HOME</a>
         <a href="#about">SOBRE MI</a>
         <a href="#projects">PROYECTOS</a>
       </nav>
     </div>
 
-    <div class="footer__line"></div>
+    <div class="footer__line" aria-hidden="true"></div>
     <div class="container footer__bottom">
       <p class="muted">© <span id="year"></span> Pablo Meyer</p>
     </div>
