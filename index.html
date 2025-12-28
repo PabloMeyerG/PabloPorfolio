@@ -14,30 +14,41 @@
 
 <body>
   <!-- NAV -->
-  <header class="nav" id="top">
-    <div class="container nav__inner">
-      <a class="brand" href="#top" aria-label="Inicio">
-        <!-- Sustituye por tu logo (SVG/PNG). Ejemplo: <img src="assets/logo.png" alt="Pablo Meyer"> -->
-        <img
-  src="assets/icons/Logo.svg"
-  alt="Pablo Meyer — Branding y Diseño Digital"
-  class="brand__logo"
-/>
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <!-- LOGO -->
+    <a class="brand" href="#top" aria-label="Inicio">
+      <img src="assets/icons/Logo.svg" alt="Pablo Meyer" class="brand__logo">
+    </a>
 
-      </a>
+    <!-- LINKS DESKTOP -->
+    <nav class="nav__links" aria-label="Navegación principal">
+      <a href="#top" class="nav__link">HOME</a>
+      <a href="#about" class="nav__link">SOBRE MI</a>
+      <a href="#projects" class="nav__link">PROYECTOS</a>
+    </nav>
 
-      <nav class="nav__links" aria-label="Navegación">
-        <a href="#top" class="nav__link">HOME</a>
-        <a href="#about" class="nav__link">SOBRE MI</a>
-        <a href="#projects" class="nav__link">PROYECTOS</a>
-        <a class="btn btn--accent" href="#contact">HABLEMOS</a>
-      </nav>
+    <!-- CTA (siempre visible) -->
+    <a class="btn btn--accent nav__cta" href="#contact">HABLEMOS</a>
 
-      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+    <!-- HAMBURGUESA (solo móvil) -->
+    <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- OVERLAY MÓVIL -->
+  <div class="nav__overlay" hidden>
+    <nav class="nav__menu">
+      <a href="#top" class="nav__mLink">HOME</a>
+      <a href="#about" class="nav__mLink">SOBRE MI</a>
+      <a href="#projects" class="nav__mLink">PROYECTOS</a>
+    </nav>
+
+    <button class="nav__close" aria-label="Cerrar menú">✕</button>
+  </div>
+</header>
+
 
   <!-- HERO -->
   <section class="hero">
@@ -100,81 +111,106 @@
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section class="section">
-    <div class="container">
-      <div class="card card--wide">
-        <h2 class="h2 center">Qué puedo hacer por tu marca</h2>
+<!-- SERVICIOS -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="card card--wide">
+      <header class="services-head center">
+        <h2 class="h2">Qué puedo hacer por tu marca</h2>
+        <p class="services-subtitle muted">
+          Packs claros, entregables concretos y un proceso simple. Diseñado para marcas que quieren verse premium.
+        </p>
+      </header>
 
-        <div class="services stagger reveal reveal--strong">
-          <!-- Branding -->
-          <article class="service">
-            <div class="icon">
-              <!-- corazón + pulso (estilo simple) -->
-              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                <path d="M32 52s-16-9.6-22-19.8C6 25.5 10.7 16 20 16c5 0 8.7 2.7 12 7 3.3-4.3 7-7 12-7 9.3 0 14 9.5 10 16.2C48 42.4 32 52 32 52Z"
-                      stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-                <path d="M12 33h10l4-7 6 14 4-7h16" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="h3">Branding</h3>
-            <ul class="list">
-              <li>Branding esencial</li>
-              <li>Logotipos</li>
-              <li>Identidades</li>
-              <li>Rebranding</li>
-              <li>Manual de marca</li>
-              <li>Contenido</li>
-            </ul>
-          </article>
+      <div class="services-grid stagger reveal reveal--strong">
 
-          <!-- Redes -->
-          <article class="service">
-            <div class="icon">
-              <!-- nodos / mensaje -->
-              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                <path d="M14 20h26a10 10 0 0 1 10 10v6a10 10 0 0 1-10 10H28l-10 8v-8h-4a10 10 0 0 1-10-10v-6a10 10 0 0 1 10-10Z"
-                      stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-                <circle cx="24" cy="34" r="2.5" fill="currentColor"/>
-                <circle cx="32" cy="34" r="2.5" fill="currentColor"/>
-                <circle cx="40" cy="34" r="2.5" fill="currentColor"/>
-              </svg>
-            </div>
-            <h3 class="h3">Redes Sociales</h3>
-            <ul class="list">
-              <li>Plantillas</li>
-              <li>Contenido</li>
-              <li>Estrategia</li>
-              <li>Optimización</li>
-              <li>Guías</li>
-              <li>Administración</li>
-            </ul>
-          </article>
+        <!-- Branding -->
+        <article class="service-card reveal reveal--strong">
+          <div class="service-icon">
+            <img src="assets/icons/Icon Branding.svg" alt="Branding">
+          </div>
 
-          <!-- Marketing -->
-          <article class="service">
-            <div class="icon">
-              <!-- megáfono -->
-              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                <path d="M12 36V28l30-10v28L12 36Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-                <path d="M42 22c6 2 10 6 10 10s-4 8-10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                <path d="M18 36l4 14a6 6 0 0 0 6 4h2l-6-20" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="h3">Marketing Digital</h3>
-            <ul class="list">
-              <li>Web</li>
-              <li>Campañas</li>
-              <li>Estrategia</li>
-              <li>Creación Ads</li>
-              <li>Posicionamiento</li>
-              <li>Meta Ads</li>
-            </ul>
-          </article>
-        </div>
+          <h3 class="service-title">Identidad visual sólida y coherente</h3>
+
+          <p class="service-desc">
+            Para marcas que quieren verse profesionales y diferenciarse desde el primer vistazo.
+          </p>
+
+          <ul class="service-list">
+            <li>Logo + sistema (versiones y usos)</li>
+            <li>Paleta + tipografías + estilo visual</li>
+            <li>Mini guía / manual de marca</li>
+          </ul>
+        </article>
+
+
+        <!-- Redes -->
+        <article class="service-card reveal reveal--strong">
+          <div class="service-icon">
+            <img src="assets/icons/Icon Sm.svg" alt="Redes sociales">
+          </div>
+
+          <h3 class="service-title">Contenido que se reconoce y convierte</h3>
+
+          <p class="service-desc">
+            Para negocios que buscan consistencia visual y un look premium.
+          </p>
+
+          <ul class="service-list">
+            <li>Pack de plantillas (IG / Stories / Reels)</li>
+            <li>Guía de estilo + sistema de posts</li>
+            <li>Optimización visual del perfil</li>
+          </ul>
+        </article>
+
+        <!-- Marketing -->
+        <article class="service-card reveal reveal--strong">
+          <div class="service-icon">
+            <img src="assets/icons/Icon Marketing.svg" alt="Marketing digital">
+          </div>
+
+          <h3 class="service-title">Campañas con diseño y estrategia</h3>
+
+          <p class="service-desc">
+            Para marcas que quieren mejorar su presencia y generar resultados.
+          </p>
+
+          <ul class="service-list">
+            <li>Creatividades para Ads y lanzamientos</li>
+            <li>Landing o piezas web (diseño + UI)</li>
+            <li>Dirección de arte y consistencia</li>
+          </ul>
+        </article>
+
+
+      </div>
+
+      <div class="services-footer">
+        <p class="services-process muted center">
+          Proceso: Descubrimiento → Diseño → Entrega
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- MODAL (opcional) -->
+<div class="modal" id="serviceModal" hidden>
+  <div class="modal__backdrop" data-close-modal></div>
+
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" type="button" aria-label="Cerrar" data-close-modal>✕</button>
+
+    <h3 class="modal__title" id="modalTitle">Ejemplo</h3>
+    <p class="modal__text muted" id="modalText"></p>
+
+    <div class="modal__actions">
+      <a class="btn btn--ghost" href="#projects" data-close-modal>Ver proyectos</a>
+      <a class="btn btn--accent" href="#contact" data-close-modal>Hablemos</a>
+    </div>
+  </div>
+</div>
+
 
   <!-- PROYECTOS -->
   <section class="section" id="projects">
@@ -324,7 +360,7 @@
       <div class="footer__left">
         <a class="brand footer__brand" href="#top" aria-label="Inicio">
           <img
-            src="assets/icons/logo.svg"
+            src="assets/icons/Logo.svg"
             alt="Pablo Meyer — Branding y Diseño Digital"
             class="brand__logo"
           />
