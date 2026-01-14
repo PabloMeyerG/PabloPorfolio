@@ -15,19 +15,30 @@
   --nav-h:76px;
 
   /* Cambia aquí tu imagen */
-  --hero-image:url("assets/hero.jpg");
+  --hero-image: url("assets/img/fondohero.jpg");
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background: radial-gradient(circle at top left,#151515 0,var(--bg) 55%);
+}
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   font-size:16px;
   line-height:1.6;
   color:var(--text);
-  background: radial-gradient(circle at top left,#151515 0,var(--bg) 55%);
+  background: var(--bg);
   overflow-x:hidden;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -37,13 +48,13 @@ button{font:inherit}
 .container{max-width:var(--container);margin:0 auto;padding:0 18px}
 
 /* =========================
-   NAV
+   NAV (SIN DUPLICADOS)
 ========================= */
 .nav{
   position:fixed; inset:0 0 auto 0;
-  z-index:100;
+  z-index:1000;
   background:rgba(0,0,0,.35);
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .nav__inner{
@@ -51,24 +62,135 @@ button{font:inherit}
   display:flex;
   align-items:center;
   gap:18px;
+  width:100%;
 }
-.brand{display:flex;align-items:center;text-decoration:none}
-.brand__logo{height:58px;width:auto}
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--text);}
+.brand__logo{height:60px;width:auto;display:block;}
 
+/* Links desktop */
 .nav__links{
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:18px;
   margin-left:auto;
 }
 .nav__link{
+  color:rgba(255,255,255,.75);
   text-decoration:none;
   font-size:13px;
-  letter-spacing:.10em;
-  color:rgba(255,255,255,.78);
+  letter-spacing:.06em;
 }
-.nav__link:hover{color:#fff}
+.nav__link:hover{color:#fff;}
 
+/* CTA */
+.nav__cta{
+  margin-left:18px;
+  white-space:nowrap;
+}
+
+/* Burger: desktop OFF */
+#navBurg{
+  display:none;
+  width:44px;height:44px;
+  background:transparent;
+  border:0;
+  padding:0;
+  cursor:pointer;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+#navBurg span{
+  display:block;
+  width:24px;
+  height:2px;
+  background:rgba(255,255,255,.9);
+  margin:4px 0;
+}
+
+/* Close: desktop OFF */
+#navClose{
+  display:none;
+  position:fixed;
+  top:16px;
+  right:18px;
+  width:44px;height:44px;
+  background:transparent;
+  border:0;
+  color:#fff;
+  font-size:34px;
+  line-height:1;
+  place-items:center;
+  cursor:pointer;
+  z-index:1001;
+}
+
+/* Overlay móvil (lo controla hidden por JS) */
+#navOverlay{
+  position: flex;
+  inset: var(--nav-h) 0 0 0;
+  z-index: 1000;
+  padding: 26px 18px 22px;
+}
+#navOverlay[hidden]{ display:none !important; }
+
+
+.nav__menu{
+  max-width:var(--container);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+.nav__mLink{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding: 14px 18px;              /* “hug” */
+  border-radius: 999px;            /* pastilla */
+
+  
+
+  text-decoration:none;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.nav__mLink:hover{
+  background: rgba(0,0,0,.85);
+  border-color: rgba(255,255,255,.16);
+  transform: translateY(-1px);
+}
+
+
+/* Navbar al hacer scroll */
+.nav.nav--scrolled{
+  background: rgba(0,0,0,.65);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+/* Mobile */
+@media (max-width:860px){
+  .nav__links{ display:none; }
+
+  #navBurg{
+    display:flex;
+    margin-left:auto; /* a la derecha */
+  }
+
+  .nav.nav--open #navClose{ display:grid; }
+  .nav.nav--open #navBurg{ opacity:0; pointer-events:none; }
+}
+
+/* Desktop hard-off */
+@media (min-width:861px){
+  #navBurg, #navClose, #navOverlay{ display:none !important; }
+}
+
+/* =========================
+   BUTTONS
+========================= */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -91,23 +213,17 @@ button{font:inherit}
   border-color:rgba(0,0,0,.25);
 }
 .btn--accent:hover{filter:brightness(.96)}
+
 .btn--pill{
   background: var(--accent);
   color: #111;
   border-color: rgba(0,0,0,.2);
-
-  /* tamaño */
   padding: 14px 26px;
   font-size: 1rem;
   font-weight: 600;
-
-  /* separación respecto al texto */
   margin-top: 36px;
-
-  /* sensación premium */
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
-
 @media (min-width: 900px){
   .btn--pill{
     margin-top: 44px;
@@ -115,88 +231,11 @@ button{font:inherit}
     font-size: 1.05rem;
   }
 }
-
 .btn--pill:hover{
   transform: translateY(-2px);
   box-shadow: 0 18px 45px rgba(0,0,0,.45);
 }
-
-.btn--pill:active{
-  transform: translateY(0) scale(.98);
-}
-
-.nav__cta{white-space:nowrap}
-
-.nav__burger{
-  display:none;
-  width:44px;height:44px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.25);
-  backdrop-filter:blur(10px);
-  padding:0;
-  align-items:center;
-  justify-content:center;
-}
-.nav__burger span{
-  display:block;
-  width:18px;height:2px;
-  background:rgba(255,255,255,.9);
-  border-radius:99px;
-  margin:3px 0;
-}
-
-/* Overlay móvil (por defecto no se ve) */
-.nav__overlay{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(12px);
-  padding-top:calc(var(--nav-h) + 16px);
-  display:none;
-}
-.nav.nav--open .nav__overlay{display:block}
-.nav__overlay[hidden]{display:none !important}
-
-.nav__close{
-  position:fixed;
-  top:14px; right:14px;
-  width:44px;height:44px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.35);
-  color:#fff;
-  font-size:22px;
-  line-height:1;
-}
-.nav__menu{
-  width:min(520px, calc(100% - 36px));
-  margin:0 auto;
-  border:1px solid rgba(255,255,255,.10);
-  background:rgba(0,0,0,.30);
-  border-radius:22px;
-  padding:28px 22px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:26px;
-  box-shadow:0 28px 70px rgba(0,0,0,.55);
-}
-.nav__mLink{
-  text-decoration:none;
-  font-weight:600;
-  letter-spacing:.16em;
-  font-size:1.05rem;
-  color:rgba(255,255,255,.92);
-}
-.nav__mLink:hover{color:#fff}
-
-/* Navbar al hacer scroll */
-.nav.nav--scrolled{
-  background:rgba(0,0,0,.62);
-  border-bottom:1px solid rgba(255,255,255,.10);
-}
+.btn--pill:active{transform: translateY(0) scale(.98);}
 
 /* =========================
    HERO
@@ -268,10 +307,7 @@ button{font:inherit}
   font-size:clamp(28px, 2.8vw, 42px);
   letter-spacing:-.02em;
 }
-.p{
-  margin:0 0 12px;
-  color:var(--muted);
-}
+.p{margin:0 0 12px;color:var(--muted)}
 .card, .service-card, .project-card{
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
@@ -306,7 +342,7 @@ button{font:inherit}
 }
 
 /* =========================
-   SERVICES (rediseño)
+   SERVICES
 ========================= */
 .services-head{margin-bottom:10px}
 .services-sub{max-width:70ch;margin:0 auto 8px}
@@ -347,20 +383,17 @@ button{font:inherit}
   line-height:1.2;
   letter-spacing:-.01em;
 }
-.service-desc{
-  margin:0 0 14px;
-  color:rgba(255,255,255,.70);
-}
+.service-desc{margin:0 0 14px;color:rgba(255,255,255,.70)}
 .service-list{
   margin:0;
-  padding-left:18px;          /* lista a la izquierda como pediste */
+  padding-left:18px;
   color:rgba(255,255,255,.76);
 }
 .service-list li{margin:6px 0}
 .services-foot{margin:18px 0 0}
 
 /* =========================
-   PROJECTS (mejorado)
+   PROJECTS
 ========================= */
 .projects-grid{
   margin-top:18px;
@@ -413,7 +446,7 @@ button{font:inherit}
 .project-arrow{font-size:16px;color:rgba(255,255,255,.70)}
 
 /* =========================
-   CONTACT (como captura)
+   CONTACT
 ========================= */
 .contact-card{
   border:1px solid var(--line);
@@ -573,9 +606,6 @@ button{font:inherit}
   .services-grid{grid-template-columns:1fr}
 }
 @media (max-width: 860px){
-  .nav__links{display:none}
-  .nav__burger{display:inline-flex}
-  .nav__cta{margin-left:auto}
   .contact-card{padding:34px 18px}
   .contact-pill{flex-direction:column;align-items:flex-start;border-radius:24px}
   .pill-divider{display:none}

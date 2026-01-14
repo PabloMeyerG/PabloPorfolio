@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Pablo Meyer — Branding & Marketing</title>
   <meta name="description" content="Portfolio de Pablo Meyer: branding, redes sociales y marketing digital." />
   <meta name="theme-color" content="#050505" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon (pon al menos UNO de estos archivos en tu repo) -->
+  <!-- Favicons -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="stylesheet" href="styles.css" />
+  <!-- JS (solo UNA vez) -->
+  <script src="main.js" defer></script>
 </head>
 
 <body>
@@ -26,292 +32,300 @@
           src="assets/icons/logo.svg"
           alt="Pablo Meyer — Branding y Diseño Digital"
           class="brand__logo"
+          decoding="async"
         />
       </a>
 
-      <nav class="nav__links" aria-label="Navegación">
+      <nav class="nav__links" aria-label="Navegación principal">
         <a href="#top" class="nav__link">HOME</a>
         <a href="#about" class="nav__link">SOBRE MI</a>
         <a href="#projects" class="nav__link">PROYECTOS</a>
       </nav>
 
-      <!-- CTA SIEMPRE VISIBLE (desktop y móvil) -->
+      <!-- CTA -->
       <a class="btn btn--accent nav__cta" href="#contact">HABLEMOS</a>
 
-      <!-- Burger (solo móvil) -->
-      <button class="nav__burger" id="navBurg" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
+      <!-- Burger -->
+      <button
+        class="nav__burger"
+        id="navBurg"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="navOverlay"
+      >
         <span></span><span></span><span></span>
       </button>
     </div>
 
+    <!-- Botón cerrar -->
+    <button class="nav__close" id="navClose" type="button" aria-label="Cerrar menú">×</button>
+
     <!-- Overlay móvil -->
     <div class="nav__overlay" id="navOverlay" hidden>
-      <button class="nav__close" id="navClose" aria-label="Cerrar menú">×</button>
-      <div class="nav__menu" role="dialog" aria-modal="true" aria-label="Menú">
+      <nav class="nav__menu" aria-label="Menú móvil">
         <a class="nav__mLink" href="#top">HOME</a>
         <a class="nav__mLink" href="#about">SOBRE MI</a>
         <a class="nav__mLink" href="#projects">PROYECTOS</a>
-      </div>
+        <a class="nav__mLink" href="#contact">HABLEMOS</a>
+      </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__overlay" aria-hidden="true"></div>
-    <div class="container hero__inner">
-      <h1 class="hero__title">
-        Diseñador gráfico experto en
-        <span class="hero__marker">Branding y Marketing</span>
-      </h1>
-      <a class="btn btn--pill" href="#projects">Ver proyectos</a>
-    </div>
-    <div class="hero__divider" aria-hidden="true"></div>
-  </section>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Portada">
+      <div class="hero__overlay" aria-hidden="true"></div>
 
-  <!-- SOBRE MI -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="card card--wide about reveal reveal--strong">
-        <div class="about__media" aria-hidden="true">
-          <img
-            src="assets/img/Pablo.jpeg"
-            alt="Pablo Meyer, diseñador de branding y diseño digital"
-            class="about__image"
-            loading="lazy"
-          />
+      <div class="container hero__inner">
+        <h1 class="hero__title">
+          Diseñador gráfico experto en
+          <span class="hero__marker">Branding y Marketing</span>
+        </h1>
+
+        <a class="btn btn--pill" href="#projects">Ver proyectos</a>
+      </div>
+
+      <div class="hero__divider" aria-hidden="true"></div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section class="section" id="about">
+      <div class="container">
+        <article class="card card--wide about reveal reveal--strong">
+          <div class="about__media" aria-hidden="true">
+            <img
+              src="assets/img/Pablo.jpeg"
+              alt="Pablo Meyer, diseñador de branding y diseño digital"
+              class="about__image"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="about__content">
+            <h2 class="h2">Sobre mí</h2>
+
+            <p class="p">
+              Soy Pablo Meyer, diseñador de branding y diseño digital.
+              Trabajo ayudando a marcas a convertir ideas en identidades claras, coherentes y con sentido.
+            </p>
+
+            <p class="p">
+              Escucho, analizo y diseño con intención. Me interesa crear sistemas visuales que comuniquen con claridad y funcionen en el tiempo, no solo que se vean bien.
+            </p>
+
+            <p class="p">
+              Diseño marcas limpias, modernas y funcionales, adaptadas a cada proyecto.<br>
+              Mi objetivo es que cada marca encuentre su voz y la exprese con confianza.
+            </p>
+
+            <div class="chips" aria-label="Habilidades">
+              <span class="chip">Branding</span>
+              <span class="chip">UX/UI</span>
+              <span class="chip">Marketing</span>
+              <span class="chip">Diseño digital</span>
+              <span class="chip">IA</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="card card--wide">
+          <header class="services-head">
+            <h2 class="h2 center">Qué puedo hacer por tu marca</h2>
+            <p class="p center services-sub">
+              Packs claros, entregables concretos y un proceso simple. Diseñado para marcas que quieren verse premium.
+            </p>
+          </header>
+
+          <div class="services-grid">
+            <article class="service-card reveal reveal--strong">
+              <div class="service-icon" aria-hidden="true">
+                <img src="assets/icons/icon-branding.svg" alt="" loading="lazy" decoding="async">
+              </div>
+              <h3 class="service-title">Identidad visual sólida y coherente</h3>
+              <p class="service-desc">Para marcas que quieren verse profesionales y diferenciarse desde el primer vistazo.</p>
+              <ul class="service-list">
+                <li>Logo + sistema (versiones y usos)</li>
+                <li>Paleta + tipografías + estilo visual</li>
+                <li>Mini guía / manual de marca</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal reveal--strong">
+              <div class="service-icon" aria-hidden="true">
+                <img src="assets/icons/icon-social.svg" alt="" loading="lazy" decoding="async">
+              </div>
+              <h3 class="service-title">Contenido que se reconoce y convierte</h3>
+              <p class="service-desc">Para negocios que quieren consistencia visual, ritmo de publicación y un look premium.</p>
+              <ul class="service-list">
+                <li>Pack de plantillas (IG/Stories/Reels)</li>
+                <li>Guía de estilo + sistema de posts</li>
+                <li>Optimización visual del perfil</li>
+              </ul>
+            </article>
+
+            <article class="service-card reveal reveal--strong">
+              <div class="service-icon" aria-hidden="true">
+                <img src="assets/icons/icon-marketing.svg" alt="" loading="lazy" decoding="async">
+              </div>
+              <h3 class="service-title">Campañas con diseño y estrategia</h3>
+              <p class="service-desc">Para marcas que quieren mejorar su presencia y generar resultados con piezas bien pensadas.</p>
+              <ul class="service-list">
+                <li>Creatividades para Ads / lanzamientos</li>
+                <li>Landing o piezas web (diseño + UI)</li>
+                <li>Dirección de arte y consistencia</li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="services-foot muted center">Proceso: Descubrimiento → Diseño → Entrega</p>
         </div>
+      </div>
+    </section>
 
-        <div class="about__content">
-          <h2 class="h2">Sobre mí</h2>
+    <!-- PROYECTOS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="card card--wide">
+          <h2 class="h2 center">Proyectos</h2>
+
+          <div class="projects-grid stagger reveal reveal--strong">
+            <a class="project-card" href="#" aria-label="Proyecto — Tasty Bites">
+              <div class="project-media">
+                <div class="project-thumb project-thumb--a" aria-hidden="true"></div>
+                <span class="project-chip">Branding</span>
+              </div>
+              <div class="project-info">
+                <div class="project-title">Tasty Bites</div>
+                <div class="project-meta">
+                  <span class="project-year">2025</span>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" aria-label="Proyecto — Altissima">
+              <div class="project-media">
+                <div class="project-thumb project-thumb--b" aria-hidden="true"></div>
+                <span class="project-chip">Digital</span>
+              </div>
+              <div class="project-info">
+                <div class="project-title">Altissima</div>
+                <div class="project-meta">
+                  <span class="project-year">2025</span>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" aria-label="Proyecto — Studio Cocochic">
+              <div class="project-media">
+                <div class="project-thumb project-thumb--c" aria-hidden="true"></div>
+                <span class="project-chip">Marketing</span>
+              </div>
+              <div class="project-info">
+                <div class="project-title">Studio Cocochic</div>
+                <div class="project-meta">
+                  <span class="project-year">2024</span>
+                  <span class="project-arrow" aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <header class="contact-head">
+            <h2 class="contact-title">¿Hablamos?</h2>
+            <p class="contact-subtitle">
+              ¿Tienes algún proyecto en mente? Contáctame y hablemos de cómo puedo ayudarte
+            </p>
+          </header>
+
+          <div class="contact-pill">
+            <div class="pill-item">
+              <span class="pill-label">Email:</span>
+              <a class="pill-link" href="mailto:pablo.meyer00@gmail.com">pablo.meyer00@gmail.com</a>
+            </div>
+            <div class="pill-divider" aria-hidden="true"></div>
+            <div class="pill-item">
+              <span class="pill-label">Teléfono:</span>
+              <a class="pill-link" href="tel:+34640096537">+34 640 096 537</a>
+            </div>
+          </div>
+
+          <div class="contact-body">
+            <form class="contact-form" action="https://formspree.io/f/meeqggqp" method="POST">
+              <div class="form-grid">
+                <input class="field" type="text" name="name" placeholder="Nombre" autocomplete="name" required />
+                <input class="field" type="email" name="email" placeholder="Correo" autocomplete="email" required />
+                <textarea class="field field--textarea" name="message" placeholder="Mensaje" rows="10" required></textarea>
+              </div>
+
+              <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
+
+              <div class="form-actions">
+                <button class="btn btn--accent btn--xl" type="submit">Enviar</button>
+              </div>
+            </form>
+
+            <div class="form-success" hidden>
+              <p class="form-success__text">Gracias, te responderé pronto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACIDAD -->
+    <section class="section section--legal" id="privacy">
+      <div class="container">
+        <div class="card card--wide">
+          <h2 class="h2">Política de privacidad</h2>
 
           <p class="p">
-            Soy Pablo Meyer, diseñador de branding y diseño digital. Me mueve convertir ideas
-            en identidades claras y con sentido. Me gusta escuchar, entender lo que una marca
-            quiere transmitir y darle una forma que conecte con las personas.
+            Los datos personales enviados a través del formulario de contacto (nombre, correo electrónico y mensaje)
+            se utilizan únicamente para responder a la consulta realizada.
           </p>
 
           <p class="p">
-            Trabajo con intención y detalle. Creo en los diseños que comunican, no solo en los
-            que se ven bien. Me adapto a cada proyecto y disfruto creando marcas limpias,
-            modernas y funcionales.
+            El envío de datos se realiza mediante el servicio Formspree, que actúa como encargado del tratamiento
+            de datos conforme al Reglamento General de Protección de Datos (RGPD).
           </p>
 
-          <p class="p">
-            Mi objetivo es sencillo: que cada marca encuentre su voz y la muestre con confianza.
+          <p class="p">No se utilizan los datos con fines comerciales ni se ceden a terceros.</p>
+
+          <p class="p muted">
+            Este sitio web no utiliza cookies propias ni de terceros con fines analíticos o publicitarios.
           </p>
-
-          <div class="chips">
-            <span class="chip">Branding</span>
-            <span class="chip">UX/UI</span>
-            <span class="chip">Marketing</span>
-            <span class="chip">Diseño digital</span>
-            <span class="chip">IA</span>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="card card--wide">
-        <header class="services-head">
-          <h2 class="h2 center">Qué puedo hacer por tu marca</h2>
-          <p class="p center services-sub">Packs claros, entregables concretos y un proceso simple. Diseñado para marcas que quieren verse premium.</p>
-        </header>
-
-        <div class="services-grid">
-          <article class="service-card reveal reveal--strong">
-            <div class="service-icon">
-              <img src="assets/icons/icon-branding.svg" alt="Branding" loading="lazy">
-            </div>
-            <h3 class="service-title">Identidad visual sólida y coherente</h3>
-            <p class="service-desc">Para marcas que quieren verse profesionales y diferenciarse desde el primer vistazo.</p>
-            <ul class="service-list">
-              <li>Logo + sistema (versiones y usos)</li>
-              <li>Paleta + tipografías + estilo visual</li>
-              <li>Mini guía / manual de marca</li>
-            </ul>
-          </article>
-
-          <article class="service-card reveal reveal--strong">
-            <div class="service-icon">
-              <img src="assets/icons/icon-social.svg" alt="Redes sociales" loading="lazy">
-            </div>
-            <h3 class="service-title">Contenido que se reconoce y convierte</h3>
-            <p class="service-desc">Para negocios que quieren consistencia visual, ritmo de publicación y un look premium.</p>
-            <ul class="service-list">
-              <li>Pack de plantillas (IG/Stories/Reels)</li>
-              <li>Guía de estilo + sistema de posts</li>
-              <li>Optimización visual del perfil</li>
-            </ul>
-          </article>
-
-          <article class="service-card reveal reveal--strong">
-            <div class="service-icon">
-              <img src="assets/icons/icon-marketing.svg" alt="Marketing" loading="lazy">
-            </div>
-            <h3 class="service-title">Campañas con diseño y estrategia</h3>
-            <p class="service-desc">Para marcas que quieren mejorar su presencia y generar resultados con piezas bien pensadas.</p>
-            <ul class="service-list">
-              <li>Creatividades para Ads / lanzamientos</li>
-              <li>Landing o piezas web (diseño + UI)</li>
-              <li>Dirección de arte y consistencia</li>
-            </ul>
-          </article>
-        </div>
-
-        <p class="services-foot muted center">Proceso: Descubrimiento → Diseño → Entrega</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="card card--wide">
-        <h2 class="h2 center">Proyectos</h2>
-
-        <div class="projects-grid stagger reveal reveal--strong">
-          <a class="project-card" href="#" aria-label="Proyecto — Tasty Bites">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--a"></div>
-              <span class="project-chip">Branding</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Tasty Bites</div>
-              <div class="project-meta">
-                <span class="project-year">2025</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="#" aria-label="Proyecto — Altissima">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--b"></div>
-              <span class="project-chip">Digital</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Altissima</div>
-              <div class="project-meta">
-                <span class="project-year">2025</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="#" aria-label="Proyecto — Studio Cocochic">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--c"></div>
-              <span class="project-chip">Marketing</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Studio Cocochic</div>
-              <div class="project-meta">
-                <span class="project-year">2024</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="#" aria-label="Proyecto — Frutas Montosa">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--d"></div>
-              <span class="project-chip">Branding</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Frutas Montosa</div>
-              <div class="project-meta">
-                <span class="project-year">2024</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="#" aria-label="Proyecto — Porcelanosa XTONE">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--e"></div>
-              <span class="project-chip">Digital</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Porcelanosa XTONE</div>
-              <div class="project-meta">
-                <span class="project-year">2024</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="#" aria-label="Proyecto — Social Pack">
-            <div class="project-media">
-              <div class="project-thumb project-thumb--f"></div>
-              <span class="project-chip">Contenido</span>
-            </div>
-            <div class="project-info">
-              <div class="project-title">Social Pack</div>
-              <div class="project-meta">
-                <span class="project-year">2024</span>
-                <span class="project-arrow">↗</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-card">
-        <header class="contact-head">
-          <h2 class="contact-title">¿Hablamos?</h2>
-          <p class="contact-subtitle">
-            ¿Tienes algún proyecto en mente? Contáctame y hablemos de cómo puedo ayudarte
-          </p>
-        </header>
-
-        <div class="contact-pill">
-          <div class="pill-item">
-            <span class="pill-label">Email:</span>
-            <a class="pill-link" href="mailto:pablo.meyer00@gmail.com">pablo.meyer00@gmail.com</a>
-          </div>
-          <div class="pill-divider" aria-hidden="true"></div>
-          <div class="pill-item">
-            <span class="pill-label">Teléfono:</span>
-            <a class="pill-link" href="tel:+34640096537">+34 640 096 537</a>
-          </div>
-        </div>
-
-        <div class="contact-body">
-          <form class="contact-form" action="https://formspree.io/f/meeqggqp" method="POST">
-            <div class="form-grid">
-              <input class="field" type="text" name="name" placeholder="Nombre" autocomplete="name" required />
-              <input class="field" type="email" name="email" placeholder="Correo" autocomplete="email" required />
-              <textarea class="field field--textarea" name="message" placeholder="Mensaje" rows="10" required></textarea>
-            </div>
-            <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" />
-            <div class="form-actions">
-              <button class="btn btn--accent btn--xl" type="submit">Enviar</button>
-            </div>
-          </form>
-
-          <div class="form-success" hidden>
-            <p class="form-success__text">Gracias, te responderé pronto.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__left">
         <a class="brand footer__brand" href="#top" aria-label="Inicio">
-          <img src="assets/icons/logo.svg" alt="Pablo Meyer — Branding y Diseño Digital" class="brand__logo footer__logo" />
+          <img
+            src="assets/icons/logo.svg"
+            alt="Pablo Meyer — Branding y Diseño Digital"
+            class="brand__logo footer__logo"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
         <p class="footer__tag muted">Identidades visuales y funcionales que conectan</p>
       </div>
@@ -320,6 +334,7 @@
         <a href="#top">HOME</a>
         <a href="#about">SOBRE MI</a>
         <a href="#projects">PROYECTOS</a>
+        <a href="#privacy">PRIVACIDAD</a>
       </nav>
     </div>
 
@@ -328,7 +343,5 @@
       <p class="muted">© <span id="year"></span> Pablo Meyer</p>
     </div>
   </footer>
-
-  <script src="main.js"></script>
 </body>
 </html>
