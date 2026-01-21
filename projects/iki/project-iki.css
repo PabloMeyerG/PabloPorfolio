@@ -1,0 +1,289 @@
+:root{
+  --bg:#050505;
+  --panel:#141414;
+  --panel2:#1b1b1b;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.72);
+  --line:rgba(255,255,255,.10);
+  --accent:#DDCB2C;
+
+  --radius:22px;
+  --radius2:18px;
+  --shadow:0 20px 55px rgba(0,0,0,.55);
+
+  --container:1400px;
+  --nav-h:76px;
+}
+
+*{box-sizing:border-box}
+html{background:var(--bg); scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--text);
+  background:var(--bg);
+  overflow-x:hidden;
+}
+
+/* Scrollbar negra */
+*{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.18) rgba(0,0,0,.35);
+}
+*::-webkit-scrollbar{ width:10px; }
+*::-webkit-scrollbar-track{ background:rgba(0,0,0,.35); }
+*::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.18); border-radius:999px; }
+*::-webkit-scrollbar-thumb:hover{ background:rgba(255,255,255,.28); }
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 18px}
+
+.muted{color:var(--muted)}
+.center{text-align:center}
+.pmax{max-width:68ch;margin-left:auto;margin-right:auto}
+
+.h2{
+  margin:0 0 14px;
+  font-size:clamp(24px, 2.6vw, 40px);
+  letter-spacing:-.02em;
+}
+.p{margin:0}
+
+/* Backdrop tipo popup (como tu home/overlay) */
+.project-page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background: radial-gradient(circle at top left,#151515 0,var(--bg) 55%);
+}
+.project-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+}
+
+/* Botón cerrar tipo “hamburger close” */
+.project-close{
+  position: fixed;
+
+  /* alineado al container como antes */
+  right: calc((100vw - var(--container)) / 2 + 18px);
+  top: 16px;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  /* 🔥 fondo tipo NAV */
+  border-radius: 999px;
+
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 3000;
+
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background .15s ease,
+    transform .15s ease,
+    border-color .15s ease;
+}
+
+/* Hover elegante, nada cuadrado */
+.project-close:hover{
+  background: rgba(0,0,0,.55);
+  border-color: rgba(255,255,255,.12);
+}
+
+.project-close:active{
+  transform: scale(.96);
+}
+
+/* En pantallas pequeñas */
+@media (max-width: 1400px){
+  .project-close{
+    right: 18px;
+  }
+}
+
+
+
+
+/* Contenedor principal */
+.project-shell{
+  min-height:100vh;
+  padding: 84px 0 40px; /* deja aire para la X */
+}
+.project-container{
+  display:flex;
+  flex-direction:column;
+  gap:28px; /* más espacio entre cards */
+}
+
+/* Card estilo home */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+/* Asegura que los bloques centrados se centran de verdad */
+.card .pmax{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.psec{
+  padding:28px;
+}
+@media (min-width: 900px){
+  .psec{ padding:34px; }
+}
+
+/* HERO (se mantiene: imagen horizontal grande + meta) */
+.hero-card{ padding:18px; }
+.ph--hero{
+  border-radius:var(--radius2);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+}
+.ph--hero img{
+  width:100%;
+  height:auto; /* NO recorta */
+  display:block;
+}
+.hero-meta{ padding:18px 10px 8px; }
+.hero-title{
+  margin:0;
+  font-size:clamp(38px, 4vw, 62px);
+  letter-spacing:-.02em;
+  font-weight:700;
+}
+.hero-sub{ margin:10px 0 0; }
+
+/* PLACEHOLDER/IMÁGENES 4/5 — NUNCA SE CORTAN */
+.ph{
+  border-radius:var(--radius2);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+}
+.ph img{
+  width:100%;
+  height:100%;
+  object-fit: contain; /* CLAVE: no recorta */
+  display:block;
+}
+.ph--45{
+  aspect-ratio: 4 / 5;
+}
+
+/* EL RETO layout (texto izq / imagen der) */
+.reto{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.reto__text{
+  text-align: left;
+}
+
+.reto__text .h2{
+  margin-bottom: 14px;
+}
+
+.reto__text .p{
+  max-width: 68ch;
+}
+
+
+/* Secciones split (imagen + texto) */
+.split{
+  display:grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap:26px;
+  align-items:center;
+}
+.split__text .p{ max-width:68ch; }
+.split--reverse{ grid-template-columns: 1.1fr .9fr; }
+
+.spacer{ height:22px; }
+
+/* Grids de imágenes */
+.pgrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:20px;
+}
+.pgrid--two{
+  margin-top:18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap:22px;
+}
+
+/* Línea suave */
+.pline{
+  height:1px;
+  background:rgba(255,255,255,.10);
+  margin:24px 0;
+}
+
+.pbottomSpace{ height:12px; }
+
+/* Responsive */
+@media (max-width: 980px){
+  .reto{ grid-template-columns:1fr; }
+  .split, .split--reverse{ grid-template-columns:1fr; }
+  .pgrid{ grid-template-columns: 1fr; }
+  .pgrid--two{ grid-template-columns: 1fr; }
+  .reto__text .p{ text-align:left; }
+}
+
+/* Barra superior tipo NAV (solo fondo) */
+.project-topbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: var(--nav-h);
+  z-index: 1500;
+
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.pcenter{
+  max-width: 980px;      /* el ancho “caja” centrada */
+  margin: 0 auto;        /* centra el layout */
+}
+
+/* Caja separada para galería del proceso */
+.process-gallery{
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: var(--radius2);
+}
+
+/* Más aire en desktop */
+@media (min-width: 900px){
+  .process-gallery{
+    padding: 26px;
+  }
+}

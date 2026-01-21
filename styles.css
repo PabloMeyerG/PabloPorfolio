@@ -418,9 +418,24 @@ button{font:inherit}
   box-shadow:0 28px 70px rgba(0,0,0,.55);
 }
 .project-media{position:relative}
+
 .project-thumb{
   height:210px;
-  background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(0,0,0,.25));
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transition:transform .35s ease, filter .35s ease;
+}
+
+/* IKI */
+.project-thumb--iki{
+  background-image: url("assets/img/projects/iki/cover-iki.jpg");
+}
+
+/* Hover */
+.project-card:hover .project-thumb{
+  transform: scale(1.04);
+  filter: contrast(1.05);
 }
 .project-chip{
   position:absolute;
