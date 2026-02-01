@@ -432,6 +432,10 @@ button{font:inherit}
   background-image: url("assets/img/projects/iki/cover-iki.jpg");
 }
 
+.project-thumb--coach{
+  background-image: url("assets/img/projects/coach/cover-coach.png");
+}
+
 /* Hover */
 .project-card:hover .project-thumb{
   transform: scale(1.04);
@@ -635,3 +639,5 @@ button{font:inherit}
 @media (max-width: 520px){
   .projects-grid{grid-template-columns:1fr}
 }
+
+
