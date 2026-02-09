@@ -1,364 +1,70 @@
+<!-- galeria.html -->
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Cartelería & Visuals — Pablo Meyer</title>
   <meta name="description" content="Selección de piezas de cartelería, composición y tipografía." />
-  <meta name="theme-color" content="#0B0B0B" />
+  <meta name="theme-color" content="#050505" />
 
-  <!-- Font (opcional) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-
-  <link rel="stylesheet" href="galeria.css">
-    <script src="galeria.js" defer></script>
-
-  <style>
-    :root{
-      --bg:#0B0B0B;
-      --card:#111111;
-      --card2:#141414;
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.68);
-      --line:rgba(255,255,255,.10);
-      --line2:rgba(255,255,255,.06);
-      --shadow: 0 18px 70px rgba(0,0,0,.55);
-
-      /* color acento suave (cámbialo si quieres) */
-      --accent:#F6E547;
-      --radius:18px;
-      --radius2:14px;
-
-      --max: 1100px;
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1000px 600px at 20% 10%, rgba(246,229,71,.10), transparent 55%),
-                  radial-gradient(900px 600px at 80% 30%, rgba(255,78,132,.08), transparent 60%),
-                  var(--bg);
-      color: var(--text);
-    }
-
-    a{ color: inherit; text-decoration:none; }
-    .container{
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 80px;
-    }
-
-    /* Top bar */
-    .topbar{
-      position: sticky;
-      top:0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(to bottom, rgba(11,11,11,.85), rgba(11,11,11,.55));
-      border-bottom: 1px solid var(--line2);
-    }
-    .topbar-inner{
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      padding: 12px 0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
-    .dot{
-      width:10px;height:10px;border-radius:99px;background:var(--accent);
-      box-shadow: 0 0 0 6px rgba(246,229,71,.12);
-    }
-    .backbtn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      cursor:pointer;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .backbtn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.16);
-    }
-
-    /* Card base */
-    .card{
-      background: linear-gradient(to bottom, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .psec{ padding: 22px; }
-
-    /* Header */
-    .hero-title{
-      margin:0;
-      font-size: clamp(28px, 3.2vw, 44px);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-    }
-    .hero-sub{
-      margin:10px 0 0;
-      color: var(--muted);
-      max-width: 70ch;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    /* chips */
-    .chips{
-      margin-top: 16px;
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .chip{
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.86);
-      cursor:pointer;
-      transition: background .18s ease, border-color .18s ease, transform .18s ease;
-      font-size: 14px;
-      user-select: none;
-    }
-    .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
-    .chip.is-active{
-      border-color: rgba(246,229,71,.38);
-      background: rgba(246,229,71,.12);
-    }
-
-    /* Gallery grid */
-    .gallery-grid{
-      margin-top: 18px;
-      display:grid;
-      gap: 14px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .gallery-item{ grid-column: span 6; }
-    @media (min-width: 900px){ .gallery-item{ grid-column: span 4; } }
-
-    .gallery-btn{
-      width:100%;
-      border:0;
-      padding:0;
-      background: transparent;
-      cursor:pointer;
-      text-align:left;
-    }
-
-    .thumb{
-      border-radius: var(--radius2);
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #0F0F0F;
-      position: relative;
-    }
-    .thumb img{
-      width:100%;
-      height:auto;
-      display:block;
-      transform: translateZ(0);
-      transition: transform .25s ease, opacity .25s ease;
-    }
-    .gallery-btn:hover img{
-      transform: scale(1.02);
-      opacity: .96;
-    }
-    .thumb::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,.42));
-      opacity: .0;
-      transition: opacity .25s ease;
-    }
-    .gallery-btn:hover .thumb::after{ opacity: 1; }
-
-    .gallery-cap{
-      display:grid;
-      gap: 4px;
-      margin-top: 10px;
-      padding: 0 2px;
-    }
-    .cap-title{
-      font-weight: 600;
-      letter-spacing: .1px;
-      line-height:1.2;
-    }
-    .cap-meta{
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.2;
-    }
-
-    /* Lightbox */
-    .lightbox{
-      position: fixed;
-      inset: 0;
-      display: none;
-      z-index: 999;
-    }
-    .lightbox.is-open{ display:block; }
-    .lb-backdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(0,0,0,.70);
-      backdrop-filter: blur(6px);
-    }
-    .lb-dialog{
-      position: relative;
-      width: min(1100px, calc(100% - 24px));
-      margin: 5vh auto;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(14,14,14,.88);
-      box-shadow: 0 40px 120px rgba(0,0,0,.75);
-      overflow:hidden;
-    }
-    .lb-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 10px;
-      padding: 14px 14px 0;
-    }
-    .lb-close{
-      border:0;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      cursor:pointer;
-      font-size: 20px;
-      line-height: 1;
-      display:grid;
-      place-items:center;
-      transition: transform .18s ease, background .18s ease;
-    }
-    .lb-close:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
-    .lb-body{
-      padding: 14px;
-      display:grid;
-      gap: 12px;
-    }
-    .lb-media{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.08);
-      background: #0F0F0F;
-    }
-    .lb-media img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-    .lb-meta{
-      display:grid;
-      gap: 6px;
-      padding: 2px 2px 8px;
-    }
-    .lb-title{
-      margin:0;
-      font-size: 18px;
-      font-weight: 650;
-    }
-    .lb-desc{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    /* Small footer */
-    .footer{
-      margin-top: 18px;
-      padding: 14px 2px 0;
-      color: var(--muted);
-      font-size: 14px;
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--line2);
-    }
-    .accent{
-      color: var(--accent);
-      font-weight: 600;
-    }
-  </style>
+  <link rel="stylesheet" href="galeria.css" />
+  <script src="galeria.js" defer></script>
 </head>
 
-<body>
+<body class="project-page">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
   <!-- Topbar -->
-  <div class="topbar">
+  <header class="topbar" role="banner">
     <div class="topbar-inner">
-      <div class="brand">
+      <div class="brand" aria-label="Cartelería & Visuals">
         <span class="dot" aria-hidden="true"></span>
-        <span>Portfolio — Galería</span>
+        <span class="brand-title">Cartelería & Visuals</span>
       </div>
 
-      <!-- Cambia href a tu home real -->
       <a class="backbtn" href="../../index.html#projects" aria-label="Volver a proyectos">
         ← Volver
       </a>
     </div>
-  </div>
+  </header>
 
-  <main class="container">
-
+  <main class="container" id="main">
     <!-- Header card -->
     <section class="card psec">
       <h1 class="hero-title">Cartelería & Visuals</h1>
       <p class="hero-sub">
         Selección de piezas gráficas centradas en <strong>composición</strong>, <strong>tipografía</strong> y <strong>dirección visual</strong>.
-        Proyecto académico / exploración visual.
       </p>
 
-      <div class="chips" aria-label="Filtros de la galería">
-        <button class="chip is-active" data-filter="all" type="button">Todo</button>
-        <button class="chip" data-filter="poster" type="button">Cartel</button>
-        <button class="chip" data-filter="typography" type="button">Tipografía</button>
-        <button class="chip" data-filter="illustration" type="button">Ilustración</button>
+      <div class="chips" aria-label="Filtros de la galería" role="tablist">
+        <button class="chip is-active" data-filter="all" type="button" role="tab" aria-selected="true">Todo</button>
+        <button class="chip" data-filter="poster" type="button" role="tab" aria-selected="false">Cartel</button>
+        <button class="chip" data-filter="typography" type="button" role="tab" aria-selected="false">Tipografía</button>
+        <button class="chip" data-filter="illustration" type="button" role="tab" aria-selected="false">Ilustración</button>
+        <button class="chip" data-filter="editorial" type="button" role="tab" aria-selected="false">Editorial</button>
+        <button class="chip" data-filter="packaging" type="button" role="tab" aria-selected="false">Packaging</button>
       </div>
     </section>
 
     <!-- Gallery -->
     <section class="card psec" style="margin-top:14px;">
       <div class="gallery-grid" id="galleryGrid">
-
-        <!-- ============ ITEM 1 ============ -->
-        <figure class="gallery-item" data-tags="poster typography">
+        <!-- ITEM 1 -->
+        <figure class="gallery-item" data-tags="poster editorial collage">
           <button class="gallery-btn"
             type="button"
-            data-full="assets/posters/dazed-full.jpg"
+            data-full="../../assets/img/projects/galeria/dazedpost.jpg"
             data-title="DAZED — Post Malone"
-            data-desc="Cartel editorial · contraste y recorte · jerarquía tipográfica">
+            data-desc="Cartel editorial · collage digital · color y contraste">
             <div class="thumb">
-              <img src="assets/posters/dazed-thumb.jpg" alt="DAZED — Post Malone" loading="lazy">
+              <img src="../../assets/img/projects/galeria/dazedpost.jpg" alt="DAZED — Post Malone" loading="lazy" decoding="async">
             </div>
             <figcaption class="gallery-cap">
               <span class="cap-title">DAZED — Post Malone</span>
@@ -367,15 +73,15 @@
           </button>
         </figure>
 
-        <!-- ============ ITEM 2 ============ -->
+        <!-- ITEM 2 (ejemplo existente) -->
         <figure class="gallery-item" data-tags="poster typography">
           <button class="gallery-btn"
             type="button"
-            data-full="assets/posters/lebron-full.jpg"
+            data-full="../../assets/img/projects/galeria/lebron.jpg"
             data-title="LeBron Quote Poster"
             data-desc="Cartel · jerarquía tipográfica · contraste y ritmo">
             <div class="thumb">
-              <img src="assets/posters/lebron-thumb.jpg" alt="LeBron Quote Poster" loading="lazy">
+              <img src="../../assets/img/projects/galeria/lebron.jpg" alt="LeBron Quote Poster" loading="lazy" decoding="async">
             </div>
             <figcaption class="gallery-cap">
               <span class="cap-title">LeBron Quote Poster</span>
@@ -384,15 +90,15 @@
           </button>
         </figure>
 
-        <!-- ============ ITEM 3 ============ -->
+        <!-- ITEM 3 -->
         <figure class="gallery-item" data-tags="poster illustration">
           <button class="gallery-btn"
             type="button"
-            data-full="assets/posters/looney-full.jpg"
+            data-full="../../assets/img/projects/galeria/looneytunes.jpg"
             data-title="Looney Tunes — HBO"
             data-desc="Cartel · ilustración y layout · estética retro">
             <div class="thumb">
-              <img src="assets/posters/looney-thumb.jpg" alt="Looney Tunes — HBO" loading="lazy">
+              <img src="../../assets/img/projects/galeria/looneytunes.jpg" alt="Looney Tunes — HBO" loading="lazy" decoding="async">
             </div>
             <figcaption class="gallery-cap">
               <span class="cap-title">Looney Tunes — HBO</span>
@@ -401,31 +107,131 @@
           </button>
         </figure>
 
-        <!-- ====== DUPLICA ESTE BLOQUE PARA MÁS PIEZAS ======
-        <figure class="gallery-item" data-tags="poster typography">
-          <button class="gallery-btn" type="button"
-            data-full="assets/posters/xxx-full.jpg"
-            data-title="Título"
-            data-desc="Descripción corta">
+        <!-- ITEM 4 -->
+        <figure class="gallery-item" data-tags="poster conceptual typography">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/fastfood.jpg"
+            data-title="Fast Food U.S.A."
+            data-desc="Cartel conceptual · crítica visual · composición y color">
             <div class="thumb">
-              <img src="assets/posters/xxx-thumb.jpg" alt="Título" loading="lazy">
+              <img src="../../assets/img/projects/galeria/fastfood.jpg" alt="Fast Food U.S.A." loading="lazy" decoding="async">
             </div>
             <figcaption class="gallery-cap">
-              <span class="cap-title">Título</span>
-              <span class="cap-meta">Cartel · Tipografía</span>
+              <span class="cap-title">Fast Food U.S.A.</span>
+              <span class="cap-meta">Cartel · Conceptual</span>
             </figcaption>
           </button>
         </figure>
-        -->
 
+        <!-- ITEM 5 -->
+        <figure class="gallery-item" data-tags="poster conceptual editorial">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/Steve.jpg"
+            data-title="Steve Jobs"
+            data-desc="Cartel conceptual · composición visual · homenaje">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/Steve.jpg" alt="Steve Jobs" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Steve Jobs</span>
+              <span class="cap-meta">Cartel · Conceptual</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <!-- ITEM 6 -->
+        <figure class="gallery-item" data-tags="poster branding illustration">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/Utopic cartel.jpg"
+            data-title="Utopick — Cartel"
+            data-desc="Cartel de marca · ilustración · identidad visual">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/Utopic cartel.jpg" alt="Utopick — Cartel" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Utopick — Cartel</span>
+              <span class="cap-meta">Cartel · Branding</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <!-- ITEM 7 -->
+        <figure class="gallery-item" data-tags="branding product art-direction">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/gucci.jpg"
+            data-title="Gucci — Dirección de arte"
+            data-desc="Mockup de producto · composición floral · identidad visual">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/gucci.jpg" alt="Gucci — Dirección de arte" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Gucci</span>
+              <span class="cap-meta">Dirección de arte · Producto</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <!-- ITEM 8 -->
+        <figure class="gallery-item" data-tags="editorial layout typography">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/Stevebook.jpg"
+            data-title="Steve Jobs — Editorial"
+            data-desc="Diseño editorial · maquetación · jerarquía tipográfica">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/Stevebook.jpg" alt="Steve Jobs — Editorial" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Steve Jobs — Editorial</span>
+              <span class="cap-meta">Editorial · Maquetación</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <!-- ITEM 9 -->
+        <figure class="gallery-item" data-tags="packaging branding food">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/Utipic packaging.jpg"
+            data-title="Utopick — Packaging"
+            data-desc="Packaging · identidad visual · diseño de producto">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/Utipic packaging.jpg" alt="Utopick — Packaging" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Utopick — Packaging</span>
+              <span class="cap-meta">Packaging · Branding</span>
+            </figcaption>
+          </button>
+        </figure>
+
+        <!-- ITEM 10 -->
+        <figure class="gallery-item" data-tags="poster branding event">
+          <button class="gallery-btn"
+            type="button"
+            data-full="../../assets/img/projects/galeria/Palo Market Fest.jpg"
+            data-title="Palo Market Fest"
+            data-desc="Cartel de evento · branding · ilustración y color">
+            <div class="thumb">
+              <img src="../../assets/img/projects/galeria/Palo Market Fest.jpg" alt="Palo Market Fest" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="gallery-cap">
+              <span class="cap-title">Palo Market Fest</span>
+              <span class="cap-meta">Evento · Branding</span>
+            </figcaption>
+          </button>
+        </figure>
       </div>
 
-      <div class="footer">
-        <span>Tip: haz clic en cualquier pieza para verla en grande.</span>
-        <span><span class="accent">3</span> piezas seleccionadas · puedes añadir más sin cambiar el sistema</span>
-      </div>
+      <footer class="footer">
+        <span class="muted">© <span id="year"></span> Pablo Meyer</span>
+        <span class="muted">Tip: flechas ← → para navegar en el lightbox</span>
+      </footer>
     </section>
-
   </main>
 
   <!-- Lightbox -->
@@ -434,86 +240,24 @@
 
     <div class="lb-dialog" role="dialog" aria-modal="true" aria-label="Vista ampliada">
       <div class="lb-top">
-        <div></div>
-        <button class="lb-close" type="button" data-close aria-label="Cerrar">×</button>
+        <div class="lb-left">
+          <h3 class="lb-title" id="lbTitle"></h3>
+          <p class="lb-desc" id="lbDesc"></p>
+        </div>
+
+        <div class="lb-actions">
+          <button class="lb-nav" type="button" id="lbPrev" aria-label="Anterior">←</button>
+          <button class="lb-nav" type="button" id="lbNext" aria-label="Siguiente">→</button>
+          <button class="lb-close" type="button" data-close aria-label="Cerrar">×</button>
+        </div>
       </div>
 
       <div class="lb-body">
         <div class="lb-media">
           <img id="lbImg" src="" alt="">
         </div>
-
-        <div class="lb-meta">
-          <h3 class="lb-title" id="lbTitle"></h3>
-          <p class="lb-desc" id="lbDesc"></p>
-        </div>
       </div>
     </div>
   </div>
-
-  <script>
-    // ----------------------------
-    // LIGHTBOX
-    // ----------------------------
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbTitle = document.getElementById('lbTitle');
-    const lbDesc = document.getElementById('lbDesc');
-
-    document.querySelectorAll('.gallery-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const full = btn.dataset.full || '';
-        const title = btn.dataset.title || '';
-        const desc = btn.dataset.desc || '';
-
-        lbImg.src = full;
-        lbImg.alt = title || 'Imagen ampliada';
-        lbTitle.textContent = title;
-        lbDesc.textContent = desc;
-
-        lb.classList.add('is-open');
-        lb.setAttribute('aria-hidden', 'false');
-      });
-    });
-
-    function closeLightbox(){
-      lb.classList.remove('is-open');
-      lb.setAttribute('aria-hidden', 'true');
-      lbImg.src = '';
-      lbImg.alt = '';
-      lbTitle.textContent = '';
-      lbDesc.textContent = '';
-    }
-
-    lb.addEventListener('click', (e) => {
-      if (e.target.matches('[data-close]')) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLightbox();
-    });
-
-    // ----------------------------
-    // FILTERS
-    // ----------------------------
-    const chips = document.querySelectorAll('.chip');
-    const items = document.querySelectorAll('.gallery-item');
-
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('is-active'));
-        chip.classList.add('is-active');
-
-        const filter = chip.dataset.filter;
-
-        items.forEach(item => {
-          const tags = (item.dataset.tags || '').split(' ').filter(Boolean);
-          const show = (filter === 'all') || tags.includes(filter);
-          item.style.display = show ? '' : 'none';
-        });
-      });
-    });
-  </script>
-
 </body>
 </html>

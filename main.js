@@ -27,7 +27,7 @@
         nav.classList.toggle('nav--open', open);
         overlay.hidden = !open;
         burg.setAttribute('aria-expanded', open ? 'true' : 'false');
-        document.body.style.overflow = '';
+        document.body.style.overflow = open ? 'hidden' : '';
       };
 
       const isOpen = () => nav.classList.contains('nav--open');

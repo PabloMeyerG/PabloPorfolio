@@ -1,13 +1,12 @@
 (() => {
-  const closeBtn = document.getElementById('projectClose');
+  const backBtn = document.querySelector('.backbtn');
 
   const goBack = () => {
-    // back si vienes del index, fallback si entras directo
     if (window.history.length > 1) window.history.back();
     else window.location.href = '../../index.html#projects';
   };
 
-  closeBtn?.addEventListener('click', (e) => {
+  backBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     goBack();
   });

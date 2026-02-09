@@ -1,217 +1,206 @@
 :root{
   --bg:#050505;
-  --panel:#141414;
-  --panel2:#1b1b1b;
-  --text:#ffffff;
-  --muted:rgba(255,255,255,.72);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.68);
   --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.06);
   --accent:#DDCB2C;
 
-  --radius:22px;
-  --radius2:18px;
-  --shadow:0 20px 55px rgba(0,0,0,.55);
-
+  --radius:18px;
+  --radius2:14px;
+  --shadow: 0 18px 70px rgba(0,0,0,.55);
+  --max:1400px;
   --container:1400px;
-  --nav-h:76px;
+  --nav-h:56px;
 }
 
-*{box-sizing:border-box}
-html{background:var(--bg); scroll-behavior:smooth;}
+*{ box-sizing:border-box; }
+html{ background:var(--bg); scroll-behavior:smooth; }
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-size:16px;
   line-height:1.6;
-  color:var(--text);
-  background:var(--bg);
+  color: var(--text);
+  background:
+    radial-gradient(1000px 600px at 20% 10%, rgba(221,203,44,.10), transparent 55%),
+    radial-gradient(900px 600px at 80% 30%, rgba(255,78,132,.08), transparent 60%),
+    var(--bg);
   overflow-x:hidden;
 }
 
-/* Scrollbar negra */
-*{
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.18) rgba(0,0,0,.35);
-}
+/* Scrollbar */
+*{ scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.18) rgba(0,0,0,.35); }
 *::-webkit-scrollbar{ width:10px; }
 *::-webkit-scrollbar-track{ background:rgba(0,0,0,.35); }
 *::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.18); border-radius:999px; }
 *::-webkit-scrollbar-thumb:hover{ background:rgba(255,255,255,.28); }
 
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
 
-.container{max-width:var(--container);margin:0 auto;padding:0 18px}
-
-.muted{color:var(--muted)}
-.center{text-align:center}
-.pmax{max-width:68ch;margin-left:auto;margin-right:auto}
+.container{ max-width:var(--container); margin:0 auto; padding:0 18px; }
+.center{ text-align:center; }
+.muted{ color: var(--muted); }
+.pmax{ max-width:68ch; margin-left:auto; margin-right:auto; }
 
 .h2{
   margin:0 0 14px;
   font-size:clamp(24px, 2.6vw, 40px);
   letter-spacing:-.02em;
+  color: rgba(255,255,255,.96);
 }
-.p{margin:0}
+.p{ margin:0; }
 
-/* Backdrop tipo popup (como tu home/overlay) */
+/* Fondo “halo” extra como galería */
 .project-page::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-2;
-  background: radial-gradient(circle at top left,#151515 0,var(--bg) 55%);
+  background:
+    radial-gradient(600px 400px at 20% 0%, rgba(221,203,44,.08), transparent 60%),
+    radial-gradient(800px 500px at 80% 20%, rgba(221,203,44,.06), transparent 65%),
+    radial-gradient(circle at top left,#151515 0,var(--bg) 55%);
 }
+
+/* Backdrop (suave, para no “matar” el fondo) */
 .project-backdrop{
   position:fixed;
   inset:0;
   z-index:-1;
-  background:rgba(0,0,0,.55);
+  background: rgba(0,0,0,.22);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Botón cerrar tipo “hamburger close” */
-.project-close{
-  position: fixed;
+/* ===== NAV igual que galería ===== */
+/* ===== NAV EXACTO (igual que galeria.css) ===== */
+.topbar{
+  position: sticky;
+  top:0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(to bottom, rgba(5,5,5,.88), rgba(5,5,5,.55));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
 
-  /* alineado al container como antes */
-  right: calc((100vw - var(--container)) / 2 + 18px);
-  top: 16px;
+.topbar-inner{
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 12px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
 
-  width: 44px;
-  height: 44px;
 
-  display: grid;
-  place-items: center;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight: 650;
+  letter-spacing: .2px;
+}
 
-  /* 🔥 fondo tipo NAV */
+.brand-title{ color: rgba(255,255,255,.9); }
+
+.dot{
+  width:10px;height:10px;border-radius:999px;background:var(--accent);
+  box-shadow: 0 0 0 6px rgba(221,203,44,.12);
+}
+
+.backbtn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
   border-radius: 999px;
-
-  color: #fff;
-  font-size: 32px;
-  line-height: 1;
-
-  cursor: pointer;
-  z-index: 3000;
-
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-
-  transition:
-    background .15s ease,
-    transform .15s ease,
-    border-color .15s ease;
+  border:1px solid rgba(255,255,255,.10); /* igual que galería */
+  background: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.92);
+  cursor:pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-/* Hover elegante, nada cuadrado */
-.project-close:hover{
-  background: rgba(0,0,0,.55);
-  border-color: rgba(255,255,255,.12);
-}
-
-.project-close:active{
-  transform: scale(.96);
-}
-
-/* En pantallas pequeñas */
-@media (max-width: 1400px){
-  .project-close{
-    right: 18px;
-  }
+.backbtn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
 }
 
 
+/* ===== Layout ===== */
+.project-shell{ min-height:100vh; padding: 28px 0 40px; }
 
-
-/* Contenedor principal */
-.project-shell{
-  min-height:100vh;
-  padding: 84px 0 40px; /* deja aire para la X */
-}
 .project-container{
   display:flex;
   flex-direction:column;
-  gap:28px; /* más espacio entre cards */
+  gap:28px;
 }
 
-/* Card estilo home */
+/* ===== Cards (glass galería) ===== */
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
+  background: linear-gradient(to bottom, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
-/* Asegura que los bloques centrados se centran de verdad */
-.card .pmax{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.psec{
-  padding:28px;
-}
+.psec{ padding:28px; }
 @media (min-width: 900px){
   .psec{ padding:34px; }
 }
 
-/* HERO (se mantiene: imagen horizontal grande + meta) */
+/* HERO */
 .hero-card{ padding:18px; }
 .ph--hero{
   border-radius:var(--radius2);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.25);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
 }
-.ph--hero img{
-  width:100%;
-  height:auto; /* NO recorta */
-  display:block;
-}
-.hero-meta{ padding:18px 10px 8px; }
+.ph--hero img{ width:100%; height:auto; display:block; }
+
 .hero-title{
   margin:0;
   font-size:clamp(38px, 4vw, 62px);
   letter-spacing:-.02em;
   font-weight:700;
+  color: rgba(255,255,255,.98);
 }
-.hero-sub{ margin:10px 0 0; }
+.hero-sub{ margin:10px 0 0; color: var(--muted); }
 
-/* PLACEHOLDER/IMÁGENES 4/5 — NUNCA SE CORTAN */
+/* Imágenes estilo galería (thumbs) */
 .ph{
   border-radius:var(--radius2);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.06),
+    0 12px 40px rgba(0,0,0,.45);
 }
 .ph img{
   width:100%;
   height:100%;
-  object-fit: contain; /* CLAVE: no recorta */
+  object-fit: contain; /* no recorta */
   display:block;
 }
-.ph--45{
-  aspect-ratio: 4 / 5;
-}
+.ph--45{ aspect-ratio: 4 / 5; }
 
-/* EL RETO layout (texto izq / imagen der) */
+/* Layouts */
 .reto{
   display: grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 26px;
   align-items: center;
 }
+.reto__text{ text-align:left; }
+.reto__text .p{ max-width: 68ch; }
 
-.reto__text{
-  text-align: left;
-}
-
-.reto__text .h2{
-  margin-bottom: 14px;
-}
-
-.reto__text .p{
-  max-width: 68ch;
-}
-
-
-/* Secciones split (imagen + texto) */
 .split{
   display:grid;
   grid-template-columns: .9fr 1.1fr;
@@ -221,9 +210,7 @@ a{color:inherit;text-decoration:none}
 .split__text .p{ max-width:68ch; }
 .split--reverse{ grid-template-columns: 1.1fr .9fr; }
 
-.spacer{ height:22px; }
-
-/* Grids de imágenes */
+/* Grids */
 .pgrid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -235,14 +222,26 @@ a{color:inherit;text-decoration:none}
   gap:22px;
 }
 
-/* Línea suave */
+/* Separador tipo galería */
 .pline{
   height:1px;
-  background:rgba(255,255,255,.10);
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.12), transparent);
   margin:24px 0;
 }
 
 .pbottomSpace{ height:12px; }
+.pcenter{ max-width: 980px; margin: 0 auto; }
+
+.process-gallery{
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: var(--radius2);
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.08);
+}
+@media (min-width: 900px){
+  .process-gallery{ padding: 26px; }
+}
 
 /* Responsive */
 @media (max-width: 980px){
@@ -250,40 +249,4 @@ a{color:inherit;text-decoration:none}
   .split, .split--reverse{ grid-template-columns:1fr; }
   .pgrid{ grid-template-columns: 1fr; }
   .pgrid--two{ grid-template-columns: 1fr; }
-  .reto__text .p{ text-align:left; }
-}
-
-/* Barra superior tipo NAV (solo fondo) */
-.project-topbar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: var(--nav-h);
-  z-index: 1500;
-
-  background: rgba(0,0,0,.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.pcenter{
-  max-width: 980px;      /* el ancho “caja” centrada */
-  margin: 0 auto;        /* centra el layout */
-}
-
-/* Caja separada para galería del proceso */
-.process-gallery{
-  margin-top: 28px;
-  padding: 22px;
-  border-radius: var(--radius2);
-}
-
-/* Más aire en desktop */
-@media (min-width: 900px){
-  .process-gallery{
-    padding: 26px;
-  }
 }

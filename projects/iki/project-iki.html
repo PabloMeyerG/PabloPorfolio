@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon del proyecto (pon tu favicon aquí) -->
+  <!-- Favicon del proyecto -->
   <link rel="icon" href="../../favicon.png" type="image/png">
 
   <!-- CSS del proyecto -->
@@ -26,23 +26,26 @@
 <body class="project-page">
   <!-- Backdrop tipo “popup” -->
   <div class="project-backdrop" aria-hidden="true"></div>
-<div class="project-topbar" aria-hidden="true"></div>
 
-  <a href="../../index.html#projects"
-   class="project-close"
-   aria-label="Cerrar proyecto">
-  ×
-</a>
+  <!-- NAV estilo galería -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Proyecto IKI">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="brand-title">IKI</span>
+      </div>
 
-
-
+      <a class="backbtn" href="../../index.html#projects" aria-label="Volver a proyectos">
+        ← Volver
+      </a>
+    </div>
+  </header>
 
   <main class="project-shell" id="top">
     <div class="container project-container">
-      <!-- HERO (mantener como estaba: imagen horizontal grande + título) -->
+      <!-- HERO -->
       <section class="card psec hero-card">
         <div class="ph ph--hero">
-          <!-- Cambia la ruta de la imagen -->
           <img src="../../assets/img/projects/iki/cover-iki.jpg" alt="IKI — Hero" />
         </div>
 
@@ -52,24 +55,25 @@
         </div>
       </section>
 
-      <!-- EL RETO (texto izquierda, imagen derecha 4/5) -->
+      <!-- EL RETO -->
       <section class="card psec">
-  <div class="reto">
-    <div class="reto__text">
-      <h2 class="h2">El reto</h2>
+        <div class="reto">
+          <div class="reto__text">
+            <h2 class="h2">El reto</h2>
 
-      <p class="p muted">
+            <p class="p muted">
  El principal reto de <strong>IKI</strong> fue desarrollar una <strong>identidad de marca</strong> que fuera minimalista, 
         pero que al mismo tiempo tuviera un aire moderno y elegante. Además, el sistema debía adaptarse a diversos formatos, 
-        manteniendo la coherencia en todos los puntos de contacto, desde papelería hasta soportes digitales.</p></div>
-    <figure class="ph ph--45" aria-label="Imagen del reto">
-      <img src="../../assets/img/projects/iki/cartel.png" alt="IKI — Imagen del reto" />
-    </figure>
-  </div>
-</section>
+        manteniendo la coherencia en todos los puntos de contacto, desde papelería hasta soportes digitales.</p>
+          </div>
 
+          <figure class="ph ph--45" aria-label="Imagen del reto">
+            <img src="../../assets/img/projects/iki/cartel.png" alt="IKI — Imagen del reto" />
+          </figure>
+        </div>
+      </section>
 
-      <!-- EL OBJETIVO (imagen 4/5 izquierda + texto derecha) -->
+      <!-- EL OBJETIVO -->
       <section class="card psec">
         <div class="split">
           <figure class="ph ph--45" aria-label="Imagen del objetivo">
@@ -79,102 +83,101 @@
           <div class="split__text">
             <h2 class="h2">El objetivo</h2>
             <p class="p muted">
-
         El objetivo principal de <strong>IKI</strong> era desarrollar una <strong>identidad visual</strong> que representara 
         la <strong>armonía entre la simplicidad, la elegancia y la sostenibilidad</strong>. La marca debía transmitir el concepto de 
         <strong>“Zen Elegance”</strong>, combinando un diseño <strong>minimalista</strong> con una <strong>conexión profunda</strong> a 
         la naturaleza, que reflejara la filosofía de <strong>vivir con estilo y presencia consciente</strong>.
-    </p>
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- EL PROCESO (texto izquierda + imagen 4/5 derecha) -->
+      <!-- EL PROCESO -->
       <section class="card psec">
-  <!-- BLOQUE PROCESO: texto + imagen -->
-  <div class="split split--reverse">
-    <div class="split__text">
-      <h2 class="h2">El proceso</h2>
+        <div class="split split--reverse">
+          <div class="split__text">
+            <h2 class="h2">El proceso</h2>
 
-      <h3>1. Investigación y Referencias</h3>
-    <p class="p muted">
+            <h3>1. Investigación y Referencias</h3>
+            <p class="p muted">
         Inicié el proyecto con una investigación profunda sobre marcas que implementan un diseño <strong>minimalista</strong> y 
         <strong>sostenible</strong>, como <strong>MUJI</strong> y <strong>Everlane</strong>. Estudié cómo estos ejemplos logran 
         transmitir <strong>elegancia</strong> a través de la <strong>sencillez</strong> y cómo utilizan materiales sostenibles sin perder 
         <strong>estilo</strong>.
-    </p>
+            </p>
 
-    <h3>2. Conceptualización</h3>
-    <ul class="p muted">
-        <li><strong>Logotipo:</strong> El logotipo de <strong>IKI</strong> se basa en <strong>formas geométricas simples</strong> y una tipografía moderna que simboliza la presencia consciente de la marca. "Iki", en japonés, refleja vivir con estilo y gracia.</li>
-        <li><strong>Paleta de colores:</strong> Se eligieron tonos neutros, con el <strong>negro</strong> como color principal para dar <strong>elegancia</strong>, y un <strong>amarillo cálido</strong> para transmitir <strong>energía</strong> y vitalidad.</li>
-        <li><strong>Tipografía:</strong> La tipografía <strong>Cutive Mono</strong> fue seleccionada por su estilo limpio y moderno, con un toque <strong>retro</strong> y <strong>atemporal</strong>, que complementa la filosofía minimalista de la marca.</li>
-    </ul>
+            <h3>2. Conceptualización</h3>
+            <ul class="p muted">
+              <li><strong>Logotipo:</strong> El logotipo de <strong>IKI</strong> se basa en <strong>formas geométricas simples</strong> y una tipografía moderna que simboliza la presencia consciente de la marca. "Iki", en japonés, refleja vivir con estilo y gracia.</li>
+              <li><strong>Paleta de colores:</strong> Se eligieron tonos neutros, con el <strong>negro</strong> como color principal para dar <strong>elegancia</strong>.</li>
+              <li><strong>Tipografía:</strong> La tipografía <strong>Cutive Mono</strong> fue seleccionada por su estilo limpio y moderno, con un toque <strong>retro</strong> y <strong>atemporal</strong>, que complementa la filosofía minimalista de la marca.</li>
+            </ul>
 
-    <h3>3. Desarrollo de Aplicaciones Visuales</h3>
-    <ul class="p muted">
-        <li><strong>Papelería:</strong> Diseñé materiales como <strong>tarjetas de visita</strong> con <strong>papel reciclado</strong> de alta calidad, siguiendo la estética minimalista de la marca.</li>
-        <li><strong>Packaging:</strong> El diseño de <strong>empaques</strong> utilizó materiales reciclados, asegurando que la identidad visual de la marca fuera coherente en todos los productos.</li>
-        <li><strong>Aplicaciones digitales:</strong> Se diseñaron <strong>páginas web</strong> y <strong>redes sociales</strong> que siguieron una estética relajante y sencilla, permitiendo una experiencia de usuario cómoda.</li>
-    </ul>
-</div>
+            <h3>3. Desarrollo de Aplicaciones Visuales</h3>
+            <ul class="p muted">
+              <li><strong>Papelería:</strong> Diseñé materiales como <strong>tarjetas de visita</strong> con <strong>papel reciclado</strong> de alta calidad, siguiendo la estética minimalista de la marca.</li>
+              <li><strong>Packaging:</strong> El diseño de <strong>empaques</strong> utilizó materiales reciclados, asegurando que la identidad visual de la marca fuera coherente en todos los productos.</li>
+              <li><strong>Aplicaciones digitales:</strong> Se diseñaron <strong>páginas web</strong> y <strong>redes sociales</strong> que siguieron una estética relajante y sencilla, permitiendo una experiencia de usuario cómoda.</li>
+            </ul>
+          </div>
 
-    <figure class="ph ph--45" aria-label="Imagen del proceso">
-      <img src="../../assets/img/projects/iki/Logo pres.png" alt="IKI — Proceso" />
-    </figure>
-  </div>
+          <figure class="ph ph--45" aria-label="Imagen del proceso">
+            <img src="../../assets/img/projects/iki/Logo pres.png" alt="IKI — Proceso" />
+          </figure>
+        </div>
 
-  <!-- SEPARADOR -->
-  <div class="pline" aria-hidden="true"></div>
+        <div class="pline" aria-hidden="true"></div>
 
-  <!-- BLOQUE GALERÍA (CAJA SEPARADA) -->
-  <div class="process-gallery">
-    <div class="pgrid">
-      <figure class="ph ph--45" aria-label="Proceso 1">
-        <img src="../../assets/img/projects/iki/gorra mockup.png" alt="IKI — Proceso 1" />
-      </figure>
+        <div class="process-gallery">
+          <div class="pgrid">
+            <figure class="ph ph--45" aria-label="Proceso 1">
+              <img src="../../assets/img/projects/iki/gorra mockup.png" alt="IKI — Proceso 1" />
+            </figure>
 
-      <figure class="ph ph--45" aria-label="Proceso 2">
-        <img src="../../assets/img/projects/iki/muppi.png" alt="IKI — Proceso 2" />
-      </figure>
+            <figure class="ph ph--45" aria-label="Proceso 2">
+              <img src="../../assets/img/projects/iki/muppi.png" alt="IKI — Proceso 2" />
+            </figure>
 
-      <figure class="ph ph--45" aria-label="Proceso 3">
-        <img src="../../assets/img/projects/iki/caja.png" alt="IKI — Proceso 3" />
-      </figure>
-    </div>
-  </div>
-</section>
+            <figure class="ph ph--45" aria-label="Proceso 3">
+              <img src="../../assets/img/projects/iki/caja.png" alt="IKI — Proceso 3" />
+            </figure>
+          </div>
+        </div>
+      </section>
 
-
-      <!-- EL RESULTADO (como el reto + 2 imágenes) -->
+      <!-- EL RESULTADO -->
       <section class="card psec">
-  <div class="pcenter">
-    <h2 class="h2 center">El resultado</h2>
+        <div class="pcenter">
+          <h2 class="h2 center">El resultado</h2>
 
-    <p class="p muted center pmax">
-    <strong>Logotipo final:</strong> Un diseño <strong>versátil</strong> y <strong>atemporal</strong> que se adapta perfectamente a diferentes soportes.</p>
-    <p class="p muted center pmax"><strong>Sistema de identidad visual:</strong> Una completa <strong>guía de identidad</strong> que abarca todos los elementos visuales: colores, tipografía y uso del logo, aplicada a <strong>papelería</strong>, <strong>productos</strong> y <strong>plataformas digitales</strong>.</p>
-    <p class="p muted center pmax"><strong>Aplicaciones visuales:</strong> Se completaron todas las aplicaciones de la marca, desde la <strong>papelería</strong> hasta el <strong>packaging</strong> y <strong>web</strong>, garantizando que cada pieza reflejara la <strong>identidad visual</strong> de <strong>IKI</strong>.</p> 
+          <p class="p muted center pmax">
+            <strong>Logotipo final:</strong> Un diseño <strong>versátil</strong> y <strong>atemporal</strong> que se adapta perfectamente a diferentes soportes.
+          </p>
+          <p class="p muted center pmax">
+            <strong>Sistema de identidad visual:</strong> Una completa <strong>guía de identidad</strong> que abarca todos los elementos visuales: colores, tipografía y uso del logo, aplicada a <strong>papelería</strong>, <strong>productos</strong> y <strong>plataformas digitales</strong>.
+          </p>
+          <p class="p muted center pmax">
+            <strong>Aplicaciones visuales:</strong> Se completaron todas las aplicaciones de la marca, desde la <strong>papelería</strong> hasta el <strong>packaging</strong> y <strong>web</strong>, garantizando que cada pieza reflejara la <strong>identidad visual</strong> de <strong>IKI</strong>.
+          </p>
 
-    <div class="pgrid pgrid--two">
-      <figure class="ph ph--45" aria-label="Resultado 1">
-        <img src="../../assets/img/projects/iki/web.png" alt="IKI — Resultado 1" />
-      </figure>
+          <div class="pgrid pgrid--two">
+            <figure class="ph ph--45" aria-label="Resultado 1">
+              <img src="../../assets/img/projects/iki/web.png" alt="IKI — Resultado 1" />
+            </figure>
 
-      <figure class="ph ph--45" aria-label="Resultado 2">
-        <img src="../../assets/img/projects/iki/tarjeta de visita.png" alt="IKI — Resultado 2" />
-      </figure>
-    </div>
+            <figure class="ph ph--45" aria-label="Resultado 2">
+              <img src="../../assets/img/projects/iki/tarjeta de visita.png" alt="IKI — Resultado 2" />
+            </figure>
+          </div>
 
-    <div class="pline" aria-hidden="true"></div>
+          <div class="pline" aria-hidden="true"></div>
 
-    <p class="p muted center pmax">
-      Este proyecto me permitió profundizar en la creación de sistemas visuales pensados a largo plazo,
-      donde cada elemento tiene un propósito y contribuye a una identidad clara y consistente.
-    </p>
-  </div>
-</section>
-
+          <p class="p muted center pmax">
+            Este proyecto me permitió profundizar en la creación de sistemas visuales pensados a largo plazo,
+            donde cada elemento tiene un propósito y contribuye a una identidad clara y consistente.
+          </p>
+        </div>
+      </section>
 
       <div class="pbottomSpace" aria-hidden="true"></div>
     </div>
